@@ -6,6 +6,8 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
+
+# Replace project.v with your Verilog source file name if different (e.g., project.v or tt_um_vga_example.v)
 PROJECT_SOURCES = project.v
 
 ifneq ($(GATES),yes)

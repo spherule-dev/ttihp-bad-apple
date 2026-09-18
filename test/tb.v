@@ -23,8 +23,16 @@ module tb ();
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
 
-  // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  // Convenient wires for Tiny Tapeout VGA Pmod DAC pinout:
+  // {hsync, B0, G0, R0, vsync, B1, G1, R1}
+  wire       hsync = uo_out[7];
+  wire [1:0] b     = {uo_out[2], uo_out[6]};
+  wire [1:0] g     = {uo_out[1], uo_out[5]};
+  wire [1:0] r     = {uo_out[0], uo_out[4]};
+  wire       vsync = uo_out[3];
+
+  // Instantiation of your module:
+  tt_um_vga_example user_project (
       .ui_in  (ui_in),    // Dedicated inputs
       .uo_out (uo_out),   // Dedicated outputs
       .uio_in (uio_in),   // IOs: Input path
